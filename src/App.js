@@ -22,7 +22,6 @@ async function getNearestCityByLocation(lat, long) {
 			woeid: 32145513
 		}
 	 ]
-	console.log(data);
 	  */
 
 	const nearestData = data[0];
@@ -30,8 +29,6 @@ async function getNearestCityByLocation(lat, long) {
 }
 
 function App() {
-	// Should have the search list available here, then,
-	// we send it to our Location component
 	const [city, setCity] = useState("");
 	const [location, setLocation] = useState([0, 0]);
 	const [weatherDataToday, setWeatherDataToday] = useState({});
@@ -58,8 +55,6 @@ function App() {
 		setCity(nearestCityInfo.title);
 
 		const woeid = nearestCityInfo.woeid;
-
-		// console.log(nearestCityInfo);
 
 		const weatherRes = await fetch(
 			`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`
