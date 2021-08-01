@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Note on cors-anywhere
-The scope of the project did not include setting up a proxy (although, a proxy may be added in the future). To access the metaweather api, this small project uses cors-anywhere. To run this application on your local machine, you must first visit https://cors-anywhere.herokuapp.com/ and follow the provided instructions.
+The scope of the project did not include setting up a proxy (although, a proxy may be added in the future). To access the metaweather api, this small project uses cors-anywhere. To run this application on your local machine, you must first visit https://cors-anywhere.herokuapp.com/corsdemo and follow the provided instructions.
 
 ## Available Scripts
 
