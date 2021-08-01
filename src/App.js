@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import "./App.css";
 
@@ -6,6 +7,104 @@ import Weather from "./components/Weather";
 import Location from "./components/Location";
 
 import Footer from "./components/Footer";
+
+const fadeIn = {
+	show: {
+		opacity: 1,
+		transition: {
+			duration: 0.5,
+		},
+	},
+	hidden: {
+		opacity: 0,
+	},
+};
+
+const item = {
+	show: (transitionDelay) => ({
+		opacity: 1,
+		transition: {
+			delay: 1 + transitionDelay,
+		},
+	}),
+	hidden: { opacity: 0 },
+};
+
+const location = {
+	show: (locationDelay) => ({
+		opacity: 1,
+		transition: {
+			delay: locationDelay,
+		},
+	}),
+	hidden: { opacity: 0 },
+};
+
+const search = {
+	show: (searchDelay) => ({
+		opacity: 1,
+		transition: {
+			delay: searchDelay,
+		},
+	}),
+	hidden: { opacity: 0 },
+};
+
+const welcomeMessage =
+	"Please search for a city or use your current location to view the weather near you".split(
+		" "
+	);
+
+function computeDelay(delay, index, pauses) {
+	return delay * index + pauses * 1.4;
+}
+
+function addDelay(word, index, delay, pauseObject) {
+	let pauses = pauseObject.pauses;
+
+	let transitionDelay;
+
+	if (word === "search") {
+		// Want same delay on search and location
+		pauseObject.inc();
+	} else if (word === "location") {
+		pauseObject.inc();
+	}
+
+	transitionDelay = computeDelay(delay, index, pauses);
+
+	return (
+		<motion.span
+			custom={transitionDelay}
+			variants={item}
+			initial="hidden"
+			animate="show"
+			key={`orchestration-span-${transitionDelay}`}
+		>
+			{`${word} `}
+		</motion.span>
+	);
+}
+
+function createSpanOrchestration(messageArray) {
+	let delay = 0.3;
+
+	const pauseObject = {
+		currentPauses: 0,
+		get pauses() {
+			return this.currentPauses;
+		},
+		inc() {
+			this.currentPauses++;
+		},
+	};
+
+	const orchestration = messageArray.map((word, index) => {
+		return addDelay(word, index, delay, pauseObject);
+	});
+
+	return orchestration;
+}
 
 async function getNearestCityByLocation(lat, long) {
 	const res = await fetch(
@@ -77,6 +176,8 @@ function App() {
 		setWeeklyWeatherData(weeklyData);
 	}
 
+	// Should check if we have a city.
+	// If not, we display the welcome message.
 	return (
 		<div className="App">
 			<div className="outer-wrapper">
@@ -85,14 +186,32 @@ function App() {
 				</header>
 				<main>
 					<div className="layout">
-						<Weather
-							city={city}
-							weatherDataToday={weatherDataToday}
-							weeklyWeatherData={weeklyWeatherData}
-						/>
+						{city ? (
+							<Weather
+								city={city}
+								weatherDataToday={weatherDataToday}
+								weeklyWeatherData={weeklyWeatherData}
+							/>
+						) : (
+							<AnimatePresence>
+								<div className="hfull flex column centered">
+									<motion.h1
+										variants={fadeIn}
+										initial="hidden"
+										animate="show"
+										className="text centered p-2 italic"
+									>
+										Welcome!
+									</motion.h1>
+									<motion.div className="text centered p-4 italic">
+										{createSpanOrchestration(welcomeMessage)}
+									</motion.div>
+								</div>
+							</AnimatePresence>
+						)}
 					</div>
 				</main>
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 		</div>
 	);
