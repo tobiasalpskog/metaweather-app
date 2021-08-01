@@ -68,41 +68,8 @@ function App() {
 		const data = await weatherRes.json();
 
 		const weatherData = data.consolidated_weather[0];
-		// air_pressure: 1021;
-		// applicable_date: "2021-07-29";
-		// created: "2021-07-29T13:48:02.175090Z";
-		// humidity: 55;
-		// id: 5014471341768704;
-		// max_temp: 19.16;
-		// min_temp: 11.205;
-		// predictability: 70;
-		// the_temp: 18.89;
-		// visibility: 14.813178537341923;
-		// weather_state_abbr: "lc";
-		// weather_state_name: "Light Cloud";
-		// wind_direction: 207.19264487165236;
-		// wind_direction_compass: "SSW";
-		// wind_speed: 4.822235535491396;
 
-		// const data = {
-		// 	air_pressure: 1021,
-		// 	applicable_date: "2021-07-29",
-		// 	created: "2021-07-29T13:48:02.175090Z",
-		// 	humidity: 55,
-		// 	id: 5014471341768704,
-		// 	max_temp: 19.16,
-		// 	min_temp: 11.205,
-		// 	predictability: 70,
-		// 	the_temp: 18.89,
-		// 	visibility: 14.813178537341923,
-		// 	weather_state_abbr: "lc",
-		// 	weather_state_name: "Light Cloud",
-		// 	wind_direction: 207.19264487165236,
-		// 	wind_direction_compass: "SSW",
-		// 	wind_speed: 4.822235535491396,
-		// };
-
-		// Loop through properties. If they are number, set precision.
+		// Change to loop through properties. If they are number, set precision.
 		weatherData.min_temp = weatherData.min_temp.toPrecision(3);
 		weatherData.max_temp = weatherData.max_temp.toPrecision(3);
 		weatherData.the_temp = weatherData.the_temp.toPrecision(3);
