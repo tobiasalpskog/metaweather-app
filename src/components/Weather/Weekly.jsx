@@ -33,7 +33,7 @@ export default function Weekly({ weeklyData }) {
 							/>
 							{/* <span className="text centered">{data.weather_state_name}</span> */}
 							<span className="text centered">
-								{setPrecision(data.the_temp, 3)}
+								{`${setPrecision(data.the_temp, 3)} °C`}
 							</span>
 							{/* <span className="text centered">{data.predictability}</span> */}
 							<CertaintyBar certaintyPercentage={data.predictability} />
