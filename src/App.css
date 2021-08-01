@@ -13,6 +13,7 @@
 .App {
 	background-color: var(--bg-primary);
 	color: var(--c-primary);
+	min-height: 100vh;
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 
 /* WRAPPERS */
 .outer-wrapper {
+	min-height: 100vh;
 }
 
 /* LAYOUTS */
@@ -116,6 +118,7 @@ main {
 }
 
 footer {
+	margin-top: auto;
 	padding: 2rem 1rem;
 	background-color: var(--bg-tertiary);
 }
