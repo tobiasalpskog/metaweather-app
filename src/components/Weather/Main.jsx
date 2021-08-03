@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import imgLinks from "../../imgLinks";
 
+import { fadeIn, container, item } from "../../variants";
+
 import {
 	getMonthFromDate,
 	getImgAltFromWeatherAbbr,
@@ -17,57 +19,6 @@ export default function Main({
 
 	const date = new Date();
 	let month = getMonthFromDate(date);
-
-	const container = {
-		show: {
-			opacity: 1,
-		},
-		hidden: {
-			opacity: 0,
-		},
-	};
-
-	const fadeIn = {
-		show: {
-			opacity: 1,
-			transition: {
-				duration: 0.5,
-			},
-		},
-		hidden: {
-			opacity: 0,
-		},
-	};
-
-	const item = {
-		show: (transitionDelay) => ({
-			opacity: 1,
-			transition: {
-				delay: 1 + transitionDelay,
-			},
-		}),
-		hidden: { opacity: 0 },
-	};
-
-	const location = {
-		show: (locationDelay) => ({
-			opacity: 1,
-			transition: {
-				delay: locationDelay,
-			},
-		}),
-		hidden: { opacity: 0 },
-	};
-
-	const search = {
-		show: (searchDelay) => ({
-			opacity: 1,
-			transition: {
-				delay: searchDelay,
-			},
-		}),
-		hidden: { opacity: 0 },
-	};
 
 	const welcomeMessage =
 		"Please search for a city or use your current location to view the weather near you".split(
