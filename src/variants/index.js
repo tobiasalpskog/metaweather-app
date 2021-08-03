@@ -1,4 +1,4 @@
-let popAnim = {
+let popSearch = {
 	initial: { scale: 1, opacity: 0 },
 	animate: {
 		opacity: [0, 1, 1, 1, 1],
@@ -42,4 +42,4 @@ const item = {
 	hidden: { opacity: 0 },
 };
 
-export { popAnim, fadeIn, container, item };
+export { popSearch, fadeIn, container, item };

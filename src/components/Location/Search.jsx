@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { popAnim, fadeIn } from "../../variants";
+import { popSearch, fadeIn } from "../../variants";
 
 const NO_RESULTS = "No results found";
 
@@ -78,7 +78,7 @@ const cities = [
 	},
 ];
 
-let variants = popAnim;
+let variants = popSearch;
 
 export default function Search({ updateLocation }) {
 	const [isExpanded, setIsExpanded] = useState(false);
