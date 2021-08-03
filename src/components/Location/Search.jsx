@@ -16,6 +16,18 @@ let variants = {
 	},
 };
 
+const fadeIn = {
+	visible: {
+		opacity: 1,
+		transition: {
+			duration: 0.5,
+		},
+	},
+	hidden: {
+		opacity: 0,
+	},
+};
+
 const cities = [
 	{
 		distance: 39213,
@@ -177,23 +189,29 @@ export default function Search({ updateLocation }) {
 							{results.map((city) => {
 								if (city.title !== NO_RESULTS) {
 									return (
-										<li
+										<motion.li
 											className="p-2"
 											key={`queryResults-${city.title}`}
 											onClick={() => selectCity(city)}
+											variants={fadeIn}
+											initial="hidden"
+											animate="visible"
 										>
 											{city.title}
-										</li>
+										</motion.li>
 									);
 								} else {
 									return (
-										<li
+										<motion.li
 											className="p-2"
 											key={`queryResults-${city}`}
 											className="text italic"
+											variants={fadeIn}
+											initial="hidden"
+											animate="visible"
 										>
 											{city.title}
-										</li>
+										</motion.li>
 									);
 								}
 							})}
