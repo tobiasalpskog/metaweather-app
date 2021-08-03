@@ -12,7 +12,7 @@ let popSearch = {
 };
 
 const fadeIn = {
-	visible: {
+	animate: {
 		opacity: 1,
 		transition: {
 			duration: 0.5,
@@ -24,7 +24,7 @@ const fadeIn = {
 };
 
 const container = {
-	show: {
+	animate: {
 		opacity: 1,
 	},
 	hidden: {
@@ -33,7 +33,7 @@ const container = {
 };
 
 const item = {
-	show: (transitionDelay) => ({
+	animate: (transitionDelay) => ({
 		opacity: 1,
 		transition: {
 			delay: 1 + transitionDelay,
