@@ -8,13 +8,7 @@ let variants = {
 	animate: {
 		opacity: [0, 1, 1, 1, 1],
 		scale: [0.2, 1.9, 1.2, 1.3, 1],
-		color: [
-			"rgb(255, 152, 188)",
-			"rgb(255, 230, 240",
-			"rgb(255, 152, 188)",
-			"rgb(255, 230, 240",
-			"rgb(255, 152, 188)",
-		],
+		color: "rgb(255, 152, 188)",
 		transition: {
 			duration: 1,
 			delay: 0.7 + 1,
@@ -140,14 +134,25 @@ export default function Search({ updateLocation }) {
 		}
 	}
 
-	function selectCity(city) {}
+	function selectCity(city) {
+		// Get coordinates of city.
+		const coordinatesString = city.latt_long;
+
+		const coordinates = coordinatesString.split(",");
+		updateLocation(+coordinates[0], +coordinates[1]);
+
+		// Automatically close for the user.
+		toggleExpansion();
+	}
 
 	function onChange(value) {
 		setCityQuery(value.target.value);
 	}
 
 	function toggleExpansion(e) {
-		e.preventDefault();
+		if (e) {
+			e.preventDefault();
+		}
 		setIsExpanded((prevState) => !prevState);
 	}
 
@@ -174,7 +179,7 @@ export default function Search({ updateLocation }) {
 									return (
 										<li
 											className="p-2"
-											key={`queryResults-${city}`}
+											key={`queryResults-${city.title}`}
 											onClick={() => selectCity(city)}
 										>
 											{city.title}

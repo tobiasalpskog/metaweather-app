@@ -5,13 +5,7 @@ const variants = {
 	animate: {
 		opacity: [0, 1, 1, 1, 1],
 		scale: [0.2, 1.9, 1.2, 1.3, 1],
-		color: [
-			"rgb(255, 152, 188)",
-			"rgb(255, 230, 240",
-			"rgb(255, 152, 188)",
-			"rgb(255, 230, 240",
-			"rgb(255, 152, 188)",
-		],
+		color: "rgb(255, 152, 188)",
 		transition: {
 			duration: 1,
 			delay: 4.5 + 1,
