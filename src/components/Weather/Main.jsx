@@ -18,63 +18,6 @@ export default function Main({
 	let alt = getImgAltFromWeatherAbbr(data.weather_state_abbr);
 
 	const date = new Date();
-	let month = getMonthFromDate(date);
-
-	const welcomeMessage =
-		"Please search for a city or use your current location to view the weather near you".split(
-			" "
-		);
-
-	function computeDelay(delay, index, pauses) {
-		return delay * index + pauses * 1.4;
-	}
-
-	function addDelay(word, index, delay, pauseObject) {
-		let pauses = pauseObject.pauses;
-
-		let transitionDelay;
-
-		if (word === "search") {
-			// Want same delay on search and location
-			pauseObject.inc();
-		} else if (word === "location") {
-			pauseObject.inc();
-		}
-
-		transitionDelay = computeDelay(delay, index, pauses);
-
-		return (
-			<motion.span
-				custom={transitionDelay}
-				variants={item}
-				initial="hidden"
-				animate="show"
-				key={`orchestration-span-${transitionDelay}`}
-			>
-				{`${word} `}
-			</motion.span>
-		);
-	}
-
-	function createSpanOrchestration(messageArray) {
-		let delay = 0.3;
-
-		const pauseObject = {
-			currentPauses: 0,
-			get pauses() {
-				return this.currentPauses;
-			},
-			inc() {
-				this.currentPauses++;
-			},
-		};
-
-		const orchestration = messageArray.map((word, index) => {
-			return addDelay(word, index, delay, pauseObject);
-		});
-
-		return orchestration;
-	}
 
 	return (
 		<section className="main p-8 pt-0 flex column space-between">
