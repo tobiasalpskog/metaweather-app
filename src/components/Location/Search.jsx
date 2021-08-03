@@ -175,7 +175,7 @@ export default function Search({ updateLocation }) {
 											onClick={() => selectCity(city)}
 											variants={fadeIn}
 											initial="hidden"
-											animate="visible"
+											animate="animate"
 										>
 											{city.title}
 										</motion.li>
@@ -188,7 +188,7 @@ export default function Search({ updateLocation }) {
 											className="text italic"
 											variants={fadeIn}
 											initial="hidden"
-											animate="visible"
+											animate="animate"
 										>
 											{city.title}
 										</motion.li>
