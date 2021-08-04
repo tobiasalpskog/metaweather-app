@@ -7,8 +7,6 @@ import Details from "./Details";
 function Weather({ city, weatherDataToday, weeklyWeatherData }) {
 	const [isShowingDetails, setIsShowingDetails] = useState(false);
 
-	useEffect(() => {}, []);
-
 	// Need data for today and the following 5-6 days.
 
 	function toggleExpandedView() {
@@ -120,12 +118,14 @@ function Weather({ city, weatherDataToday, weeklyWeatherData }) {
 				isShowingDetails={isShowingDetails}
 				toggleExpandedView={toggleExpandedView}
 			/>
-			<Details
-				data={weatherDataToday}
-				isShowingDetails={isShowingDetails}
-				toggleExpandedView={toggleExpandedView}
-			/>
-			<Weekly weeklyData={weeklyWeatherData} />
+			<div className="flex column">
+				<Details
+					data={weatherDataToday}
+					isShowingDetails={isShowingDetails}
+					toggleExpandedView={toggleExpandedView}
+				/>
+				<Weekly weeklyData={weeklyWeatherData} />
+			</div>
 		</>
 	);
 }
