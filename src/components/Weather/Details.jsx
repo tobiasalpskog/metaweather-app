@@ -74,21 +74,32 @@ export default function Details({
 			>
 				<h2 className="text centered">Details</h2>
 				<div className="grid 2 align-center justify-center">
-					<p>{`Min: ${data.min_temp} Max: ${data.max_temp}`}</p>
-					<p>{`Humidity: ${data.humidity}%`}</p>
-					<p>{`Certainty: ${data.predictability}%`}</p>
-					<p className="md-36">
-						<span className="material-icons mr-2 mtb-auto md-36">
-							visibility
-						</span>
-						{`${data.visibility}`}
+					<p>
+						<span>Max: </span>
+						<span className="pl-4 pr-4">{`${data.max_temp} °C`}</span>
+						<span className="pl-4">Min: </span>
+						<span className="pr-2 pl-4">{`${data.min_temp} °C`}</span>
 					</p>
-					<p className="md-36">
-						<span className="md-24">{`${data.wind_direction_compass}`}</span>
-						<span className="material-icons mr-2 mtb-auto md-36">
+					<p>
+						<span>Humidity: </span>
+						<span className="pl-4">{`${data.humidity}%`}</span>
+					</p>
+					<p>
+						<span>Certainty: </span>
+						<span className="pl-4">{`${data.predictability}%`}</span>
+					</p>
+					<p>
+						<span>Visibility: </span>
+						<span className="ml-4">{`${data.visibility}`}</span>
+					</p>
+					<p>
+						<span>Wind: </span>
+						<span className="ml-4">{`${data.wind_speed}`}</span>
+						{" m/s"}
+						<span className="material-icons ml-4 mtb-auto">
 							{windDirection}
 						</span>
-						{`${data.wind_speed}`}{" "}
+						<span className="ml-2">{`${data.wind_direction_compass}`}</span>
 					</p>
 				</div>
 				<button
