@@ -6,8 +6,6 @@ import "./App.css";
 import Weather from "./components/Weather";
 import Location from "./components/Location";
 
-import Footer from "./components/Footer";
-
 const fadeIn = {
 	show: {
 		opacity: 1,
@@ -25,26 +23,6 @@ const item = {
 		opacity: 1,
 		transition: {
 			delay: 1 + transitionDelay,
-		},
-	}),
-	hidden: { opacity: 0 },
-};
-
-const location = {
-	show: (locationDelay) => ({
-		opacity: 1,
-		transition: {
-			delay: locationDelay,
-		},
-	}),
-	hidden: { opacity: 0 },
-};
-
-const search = {
-	show: (searchDelay) => ({
-		opacity: 1,
-		transition: {
-			delay: searchDelay,
 		},
 	}),
 	hidden: { opacity: 0 },
@@ -143,6 +121,51 @@ function App() {
 		setLocation([latitude, longitude]);
 	}
 
+	// const data1 = {
+	// 	id: 5078260196048896,
+	// 	weather_state_name: "Light Cloud",
+	// 	weather_state_abbr: "lc",
+	// 	wind_direction_compass: "NW",
+	// 	created: "2021-08-04T07:59:43.584220Z",
+	// 	applicable_date: "2021-08-04",
+	// 	min_temp: "12.3",
+	// 	max_temp: "20.4",
+	// 	the_temp: "19.7",
+	// 	wind_speed: "3.28",
+	// 	wind_direction: 309.1182428566674,
+	// 	air_pressure: 1015,
+	// 	humidity: 56,
+	// 	visibility: "12.4",
+	// 	predictability: 70,
+	// };
+	// const data2 = {
+	// 	id: 6079332784013312,
+	// 	weather_state_name: "Heavy Cloud",
+	// 	weather_state_abbr: "hc",
+	// 	wind_direction_compass: "SW",
+	// 	created: "2021-08-04T08:01:04.566080Z",
+	// 	applicable_date: "2021-08-04",
+	// 	min_temp: "10.8",
+	// 	max_temp: "21.1",
+	// 	the_temp: "19.9",
+	// 	wind_speed: "3.58",
+	// 	wind_direction: 215.7634508624013,
+	// 	air_pressure: 1014.5,
+	// 	humidity: 45,
+	// 	visibility: "11.8",
+	// 	predictability: 71,
+	// };
+
+	// function toggleDummyData() {
+	// 	if (city === "Copenhagen") {
+	// 		setWeatherDataToday(data2);
+	// 		setCity("Stockholm");
+	// 	} else {
+	// 		setWeatherDataToday(data1);
+	// 		setCity("Copenhagen");
+	// 	}
+	// }
+
 	async function getWeatherData() {
 		// Use real location
 		const nearestCityInfo = await getNearestCityByLocation(
@@ -151,7 +174,6 @@ function App() {
 		);
 
 		// Update city..
-		setCity(nearestCityInfo.title);
 
 		const woeid = nearestCityInfo.woeid;
 
@@ -171,6 +193,7 @@ function App() {
 		weatherData.wind_speed = weatherData.wind_speed.toPrecision(3);
 
 		setWeatherDataToday(weatherData);
+		setCity(nearestCityInfo.title);
 
 		const weeklyData = data.consolidated_weather.slice(1);
 		setWeeklyWeatherData(weeklyData);
@@ -185,7 +208,8 @@ function App() {
 					<Location updateLocation={updateLocation} />
 				</header>
 				<main>
-					<div className="layout">
+					{/* <button onClick={toggleDummyData}>Toggle</button> */}
+					<div className="layout mh-center">
 						{city ? (
 							<Weather
 								city={city}
