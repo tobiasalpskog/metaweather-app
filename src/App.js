@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import "./App.css";
 
@@ -209,31 +209,31 @@ function App() {
 				</header>
 				<main>
 					{/* <button onClick={toggleDummyData}>Toggle</button> */}
-					<div className="layout mh-center">
-						{city ? (
+					{city ? (
+						<div className="layout mh-center">
 							<Weather
 								city={city}
 								weatherDataToday={weatherDataToday}
 								weeklyWeatherData={weeklyWeatherData}
 							/>
-						) : (
-							<AnimatePresence>
-								<div className="hfull flex column centered">
-									<motion.h1
-										variants={fadeIn}
-										initial="hidden"
-										animate="show"
-										className="text centered p-2 italic"
-									>
-										Welcome!
-									</motion.h1>
-									<motion.div className="text centered p-4 italic">
-										{createSpanOrchestration(welcomeMessage)}
-									</motion.div>
-								</div>
-							</AnimatePresence>
-						)}
-					</div>
+						</div>
+					) : (
+						<>
+							<div className="hfull flex column centered mh-auto">
+								<motion.h1
+									variants={fadeIn}
+									initial="hidden"
+									animate="show"
+									className="text centered p-2 italic"
+								>
+									Welcome!
+								</motion.h1>
+								<motion.div className="text centered p-4 italic">
+									{createSpanOrchestration(welcomeMessage)}
+								</motion.div>
+							</div>
+						</>
+					)}
 				</main>
 				{/* <Footer /> */}
 			</div>
