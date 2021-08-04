@@ -26,20 +26,22 @@ export default function CertaintyBar({ certaintyPercentage }) {
 
 	return (
 		<>
-			<div className="vfull flex row">
-				<p className="text centered mtb-auto pr-1">%</p>
-				<div
-					className="bar percent"
-					style={{
-						backgroundColor: bgColor,
-						width: `${certaintyPercentage}%`,
-					}}
-				></div>
-				<div className="bar divider"></div>
-				<div
-					className="bar empty"
-					style={{ width: `${100 - certaintyPercentage}%` }}
-				></div>
+			<div className="vfull flex column">
+				<p className="text centered mtb-auto pr-1">Certainty</p>
+				<div className="vfull flex row">
+					<div
+						className="bar percent"
+						style={{
+							backgroundColor: bgColor,
+							width: `${certaintyPercentage}%`,
+						}}
+					></div>
+					<div className="bar divider"></div>
+					<div
+						className="bar empty"
+						style={{ width: `${100 - certaintyPercentage}%` }}
+					></div>
+				</div>
 			</div>
 		</>
 	);
