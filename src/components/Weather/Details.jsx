@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 
+import { motion } from "framer-motion";
+
+import { fadeIn, fadeOut } from "../../variants";
+
 export default function Details({
 	data,
 	isShowingDetails,
@@ -55,16 +59,21 @@ export default function Details({
 
 	return (
 		<>
-			<div
+			<motion.div
 				id="details-container"
 				className={
 					isShowingDetails
 						? "transition smooth-6 delay-4 color bg expanded p-8 pt-0"
 						: "transition smooth-6 color bg collapsed"
 				}
+				initial="hidden"
+				animate="animate"
+				variants={fadeIn}
+				exit={fadeOut}
+				layout
 			>
 				<h2 className="text centered">Details</h2>
-				<div className="grid 2">
+				<div className="grid 2 align-center justify-center">
 					<p>{`Min: ${data.min_temp} Max: ${data.max_temp}`}</p>
 					<p>{`Humidity: ${data.humidity}%`}</p>
 					<p>{`Certainty: ${data.predictability}%`}</p>
@@ -92,7 +101,7 @@ export default function Details({
 				>
 					Hide Details
 				</button>
-			</div>
+			</motion.div>
 		</>
 	);
 }
