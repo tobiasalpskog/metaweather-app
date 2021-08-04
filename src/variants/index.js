@@ -1,8 +1,8 @@
 let popSearch = {
-	initial: { scale: 1, opacity: 0 },
+	hidden: { scale: 1, opacity: 0 },
 	animate: {
-		opacity: [0, 1, 1, 1, 1],
-		scale: [0.2, 1.9, 1.2, 1.3, 1],
+		opacity: [0, 1],
+		scale: [0, 1.9, 1],
 		color: "rgb(255, 152, 188)",
 		transition: {
 			duration: 1,
@@ -23,6 +23,11 @@ const fadeIn = {
 	},
 };
 
+const fadeOut = {
+	opacity: 0,
+	x: 100,
+};
+
 const container = {
 	animate: {
 		opacity: 1,
@@ -32,7 +37,32 @@ const container = {
 	},
 };
 
+const list = {
+	animate: {
+		opacity: 1,
+		transition: {
+			when: "beforeChildren",
+			staggerChildren: 0.3,
+		},
+	},
+	hidden: {
+		opacity: 0,
+		transition: {
+			when: "afterChildren",
+		},
+	},
+};
+
 const item = {
+	animate: {
+		opacity: 1,
+	},
+	hidden: {
+		opacity: 0,
+	},
+};
+
+const dynamicItem = {
 	animate: (transitionDelay) => ({
 		opacity: 1,
 		transition: {
@@ -42,4 +72,4 @@ const item = {
 	hidden: { opacity: 0 },
 };
 
-export { popSearch, fadeIn, container, item };
+export { popSearch, fadeIn, fadeOut, container, list, item, dynamicItem };
