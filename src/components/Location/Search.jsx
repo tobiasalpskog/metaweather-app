@@ -200,7 +200,7 @@ export default function Search({ updateLocation }) {
 					<motion.button
 						className="transparent"
 						variants={variants}
-						initial="initial"
+						initial="hidden"
 						animate="animate"
 						onClick={toggleExpansion}
 					>
