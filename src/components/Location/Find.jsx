@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
 const variants = {
-	initial: { scale: 1, opacity: 0 },
+	hidden: { scale: 1, opacity: 0 },
 	animate: {
-		opacity: [0, 1, 1, 1, 1],
-		scale: [0.2, 1.9, 1.2, 1.3, 1],
+		opacity: [0, 1],
+		scale: [0, 1.9, 1],
 		color: "rgb(255, 152, 188)",
 		transition: {
 			duration: 1,
@@ -43,7 +43,7 @@ export default function Find({ updateLocation }) {
 			<motion.button
 				className="transparent"
 				variants={variants}
-				initial="initial"
+				initial="hidden"
 				animate="animate"
 				onClick={getLocation}
 			>
