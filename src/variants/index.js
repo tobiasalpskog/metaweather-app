@@ -25,7 +25,6 @@ const fadeIn = {
 
 const fadeOut = {
 	opacity: 0,
-	x: 100,
 };
 
 const container = {
