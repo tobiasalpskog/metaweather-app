@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Main from "./Main";
 import Weekly from "./Weekly";
 import Details from "./Details";
-import { motion, AnimateSharedLayout } from "framer-motion";
+import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 
 function Weather({ city, weatherDataToday, weeklyWeatherData }) {
 	const [isShowingDetails, setIsShowingDetails] = useState(false);
@@ -113,19 +113,23 @@ function Weather({ city, weatherDataToday, weeklyWeatherData }) {
 
 	return (
 		<>
-			<Main
-				data={weatherDataToday}
-				city={city}
-				isShowingDetails={isShowingDetails}
-				toggleExpandedView={toggleExpandedView}
-			/>
 			<AnimateSharedLayout>
+				<Main
+					data={weatherDataToday}
+					city={city}
+					isShowingDetails={isShowingDetails}
+					toggleExpandedView={toggleExpandedView}
+				/>
 				<motion.div className="flex column" layout>
-					<Details
-						data={weatherDataToday}
-						isShowingDetails={isShowingDetails}
-						toggleExpandedView={toggleExpandedView}
-					/>
+					<AnimatePresence>
+						{isShowingDetails && (
+							<Details
+								data={weatherDataToday}
+								isShowingDetails={isShowingDetails}
+								toggleExpandedView={toggleExpandedView}
+							/>
+						)}
+					</AnimatePresence>
 					<Weekly weeklyData={weeklyWeatherData} />
 				</motion.div>
 			</AnimateSharedLayout>
