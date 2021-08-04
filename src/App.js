@@ -204,7 +204,7 @@ function App() {
 	return (
 		<div className="App">
 			<div className="outer-wrapper">
-				<header>
+				<header className="lg-fixed vfull">
 					<Location updateLocation={updateLocation} />
 				</header>
 				<main>
